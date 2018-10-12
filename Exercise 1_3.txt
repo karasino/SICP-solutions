@@ -1,0 +1,9 @@
+Определите процедуру, которая принимает в качестве аргументов три числа и возвращает сумму
+квадратов двух больших из них.
+
+(define (sum-of-squares x y)
+        (+ (* x x) (* y y)))
+(define (func a b c)
+        (cond ((and (> b a) (> c a)) (sum-of-squares b c))
+              ((and (> a b) (> c b)) (sum-of-squares a c))
+              ((and (> b c) (> a c)) (sum-of-squares a b))))
