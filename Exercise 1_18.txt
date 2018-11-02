@@ -1,0 +1,18 @@
+Используя результаты упражнений 1.16 и 1.17, разработайте процедуру, которая порождает итера-
+тивный процесс для умножения двух чисел с помощью сложения, удвоения и деления пополам, и
+затрачивает логарифмическое число шагов.
+
+(define (even? a)
+  (define (% a b)
+    (if (< a b) a (% (- a b) b)))
+  (if (= (% a 2) 0) #t #f))
+(define (double x)
+  (* x 2))
+(define (halve x)
+  (/ x 2))
+(define (fast-multi a b)
+  (define (fast-multi-iter a b acc)
+    (cond ((= b 0) acc)
+          ((even? b) (fast-multi-iter (double a) (halve b) acc))
+          (else (fast-multi-iter a (- b 1) (+ acc a)))))
+  (fast-multi-iter a b 0))
